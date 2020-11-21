@@ -148,31 +148,31 @@ class IOUIssueTests {
      * - When checking the [IOUState.amount] property is greater than zero, you need to check the
      *   [IOUState.amount.quantity] field.
      */
-//    @Test
-//    fun cannotCreateZeroValueIOUs() {
-//        ledgerServices.ledger {
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(0.POUNDS, ALICE.party, BOB.party)) // Zero amount fails.
-//                this `fails with` "A newly issued IOU must have a positive amount."
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(100.SWISS_FRANCS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(1.POUNDS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//            transaction {
-//                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
-//                output(IOUContract.IOU_CONTRACT_ID, IOUState(10.DOLLARS, ALICE.party, BOB.party))
-//                this.verifies()
-//            }
-//        }
-//    }
+    @Test
+    fun cannotCreateZeroValueIOUs() {
+        ledgerServices.ledger {
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(0.POUNDS, ALICE.party, BOB.party)) // Zero amount fails.
+                this `fails with` "A newly issued IOU must have a positive amount."
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(100.SWISS_FRANCS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(1.POUNDS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+            transaction {
+                command(listOf(ALICE.publicKey, BOB.publicKey), IOUContract.Commands.Issue())
+                output(IOUContract.IOU_CONTRACT_ID, IOUState(10.DOLLARS, ALICE.party, BOB.party))
+                this.verifies()
+            }
+        }
+    }
 
     /**
      * Task 5.
